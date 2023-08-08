@@ -28,6 +28,12 @@ void Update()
 4. 오브젝트의 부착
 5. 애니매이션 더블 클릭, 녹화 버튼 누르고 원하는 시간대에 원하는 스프라이트 넣기
 
+## 애니메이션 전환
+1. Animation Controller에서 전환하고자 하는 애니메이션 우클릭, Make Transition 추가
+2. 해당 애니메이션 좌클릭, Has Exit Time 체크 해제
+3. Parameter 추가 (ex. bool , isOnAir)
+4. 전환하기 전 애니메이션 클릭, Condition 추가, 아까 만든 parameter 추가 (ex. isOnAir true)
+
 ## 미니프로젝트
 올바른 카드 매치 시 팀원의 이름 출력, 다른 카드 매치 시 "실패" 메시지를 출력하는 기능을 구현했다.
   ```cs
