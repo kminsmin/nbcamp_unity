@@ -105,4 +105,8 @@ if (cardsLeft == 2) //게임클리어 조건
             bestScoreText.text = PlayerPrefs.GetFloat("bestScore1").ToString();
         }
 ```
-뭔가 크게 어려운걸 한건 아닌데 태초마을 한번으로 멘탈 와장창 됐던 하루...
+뭔가 크게 어려운걸 한건 아닌데 태초마을 한번으로 멘탈 와장창 됐던 하루...  
+  
+ #내일배움캠프  
+ #스파르타내일배움캠프  
+ #스파르타내일배움캠프TIL  
