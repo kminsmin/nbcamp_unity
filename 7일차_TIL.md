@@ -107,3 +107,103 @@ foreach (string item in inventory)
     Console.WriteLine(item);
 }
 ```
+break : 반복문에서 나올 때 사용한다.  
+continue : 현재 반복을 중단하고 다음 반복을 시작한다.  
+```cs
+int sum = 0;
+
+            while (true)
+            {
+                Console.Write("숫자를 입력하세요: ");
+                int input = int.Parse(Console.ReadLine());
+
+                if (input == 0)
+                {
+                    Console.WriteLine("프로그램을 종료합니다.");
+                    break;
+                }
+
+                if (input < 0)
+                {
+                    Console.WriteLine("음수는 무시합니다.");
+                    continue;
+                }
+
+                sum += input;
+                Console.WriteLine("현재까지의 합: " + sum);
+            }
+
+            Console.WriteLine("합계: " + sum);
+```
+### 조건문, 반복문 사용해서 숫자 맞추기 게임  
+```cs
+            int targetNumber = new Random().Next(1, 101);
+            int guess = 0;
+            int count = 0;
+            Console.WriteLine("1부터 100 사이의 숫자를 맞춰보세요.");
+
+            while (guess != targetNumber)
+            {
+                Console.Write("자! 말해봐요 : ");
+                guess = int.Parse(Console.ReadLine());
+                count++;
+                if (guess > targetNumber) 
+                {
+                    Console.WriteLine("다운!");
+                    
+                }
+                else if(guess < targetNumber) 
+                {
+                    Console.WriteLine(("업!"));
+                   
+                }
+                else
+                {
+                
+                    Console.WriteLine("정답! 시도 횟수 {0}번",count);
+                }
+            }
+```
+
+## 배열  
+배열은 동일한 자료형의 값들을 모아놓은 자료구조이다.  
+1차원 배열은 동일한 데이터 유형을 가지는 데이터 요소들을 한 번에 모아서 다룰 수 있는 구조이다. 인덱스를 통해 각 요소에 접근할 수 있고 선언된 크기만큼의 공간을 메모리에 할당받는다.  
+다차원 배열은 기본적으로 행렬의 구조를 가지고 있다. 다차원 배열을 활용하면 복잡한 데이터 구조를 효율적으로 관리할 수 있다.  
+(2차원 : 행/열, 3차원 : 면/행/열)  
+### 2차원 배열을 활용한 게임 맵 구현  
+```cs
+int[,] map = new int[5, 5] 
+{ 
+    { 1, 1, 1, 1, 1 }, 
+    { 1, 0, 0, 0, 1 }, 
+    { 1, 0, 1, 0, 1 }, 
+    { 1, 0, 0, 0, 1 }, 
+    { 1, 1, 1, 1, 1 } 
+};
+
+for (int i = 0; i < 5; i++)
+{
+    for (int j = 0; j < 5; j++)
+    {
+        if (map[i, j] == 1)
+        {
+            Console.Write("■ ");
+        }
+        else
+        {
+            Console.Write("□ ");
+        }
+    }
+    Console.WriteLine();
+}
+```
+## 컬렉션  
+컬렉션은 자료를 모아 놓은 데이터 구조이다. 배열과 비슷하지만 배열과는 다르게 크기가 가변적이다. 사용하기 위해서는 System.Collections.Generic 네임스페이스를 추가해야 한다. 배열보다 사용하기 편리할 수도 있지만, 메모리 사용량 증가, 데이터 접근 시간 증가, 코드 복잡도 증가 등의 이유로 인해 무분별한 사용은 좋지 않다. 
+C#에서는 다양한 종류의 컬렉션을 제공한다.  
+1. List : 가변적인 크기를 갖는 배열
+2. Dictionary : 키와 값으로 구성된 데이터를 저장
+3. Stack : 후입선출(LIFO) 구조를 가진 자료구조
+4. Queue : 선입선출(FIFO) 구조를 가진 자료구조
+5. HashSet : 중복되지 않은 요소들로 이루어진 집합
+
+
