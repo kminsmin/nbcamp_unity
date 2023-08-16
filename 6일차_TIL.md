@@ -1,4 +1,4 @@
-<img width="80%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/4e72ce85-44aa-460e-907f-0660e5c72d17"/>  
+<img width="100%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/4e72ce85-44aa-460e-907f-0660e5c72d17"/>  
 
 # 내일배움캠프 6일차 TIL  
 C# 문법종합반 1주차  
