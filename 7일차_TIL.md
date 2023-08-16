@@ -206,4 +206,39 @@ C#에서는 다양한 종류의 컬렉션을 제공한다.
 4. Queue : 선입선출(FIFO) 구조를 가진 자료구조
 5. HashSet : 중복되지 않은 요소들로 이루어진 집합
 
+## 메서드
+특정 작업 수행을 위한 독립적인 코드블록이다. 함수와 혼동하기 쉬우나, 클래스 안에 포함된 함수라고 생각하면 될 것 같다. 즉 함수가 상위 개념이다.  
+매서드를 사용하면 코드가 깔끔해지고 관리하기 쉬워진다.  
+### 메서드 선언과 호출  
+```
+[접근 제한자] [리턴 타입] [메서드 이름]([매개변수])
+{
+    // 메서드 실행 코드
+}
+```
+접근 제한자(Access Modifier) : 메서드에 접근할 수 있는 범위(public, private, protected)  
+리턴 타입(Return Type)  : 메서드가 반환하는 값의 데이터 타입. 반환값이 없을 경우 void  
+메서드 이름(Method Name) : 메서드를 호출하기 위해 사용하는 이름  
+매개변수(Parameters) : 메서드에 전달되는 입력 값  
+메서드 실행 코드(Method Body) : 중괄호 안에 메서드가 수행하는 작업을 구현하는 코드를 작성  
+```cs
+// 예시 1: 반환 값이 없는 메서드
+public void SayHello()
+{
+    Console.WriteLine("안녕하세요!");
+}
+
+// 예시 2: 매개변수가 있는 메서드
+public void GreetPerson(string name)
+{
+    Console.WriteLine("안녕하세요, " + name + "님!");
+}
+
+// 예시 3: 반환 값이 있는 메서드
+public int AddNumbers(int a, int b)
+{
+    int sum = a + b;
+    return sum;
+}
+```
 
