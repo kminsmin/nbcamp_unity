@@ -244,7 +244,94 @@ public int AddNumbers(int a, int b)
 ## 게임 과제 : 틱택토 게임 만들기  
 콘솔에서 마우스 커서 위치를 가져올 수 있는 기능이 있는 줄 모르고 행렬을 각각 입력하는 방식으로 구현했다.  개인적인 욕심으로 인해 게임판 사이즈도 변경 가능하게 구현했다.  
 ```cs
+using System.Drawing;
 
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void StartGame(int size)
+        {
+            for (int i = 0; i < size; i++)
+            {   
+                for (int j = 0; j < size; j++)
+                {
+                    Console.Write("□ ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static int PlayerInputR()
+        {
+            Console.Write("표시할 곳을 고르세요(행) :  ");
+           int row = int.Parse(Console.ReadLine());
+            return row;
+            
+        }
+
+        static int PlayerInputC()
+        {
+            Console.Write("표시할 곳을 고르세요(열) :  ");
+            int col = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            return col;
+
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("게임의 난이도를 정해보세요 : ");
+            int gameSize = int.Parse(Console.ReadLine());
+            StartGame(gameSize);
+            string[,] blocks = new string [gameSize, gameSize];
+            for (int i = 0;i < blocks.GetLength(0);i++)
+            {
+                for (int j=0;j < blocks.GetLength(1);j++)
+                {
+                    blocks[i, j] = "□ ";
+                }
+            }
+            
+            int count = 0;
+            while (true)
+            {
+                int row = PlayerInputR();
+                int col = PlayerInputC();
+                blocks[row-1 , col-1] = "● ";
+                
+                int comRow = new Random().Next(0,gameSize);
+                int comCol = new Random().Next(0, gameSize);
+                while (row == comRow && col == comCol)
+                {
+                    comRow = new Random().Next(0, gameSize);
+                    comRow = new Random().Next(0, gameSize);
+                }
+                blocks[comRow, comCol] = "※ ";
+                Console.Clear();
+                for (int i = 0; i < gameSize; i++)
+                {
+                    for (int j = 0; j < gameSize; j++)
+                    {
+                        Console.Write(blocks[i, j]);
+                    }
+                    Console.WriteLine();
+                }
+                count++;
+                if (count == gameSize * gameSize)
+                {
+                    Console.WriteLine("게임 끝!");
+                    break;
+                }
+
+
+
+            }
+            
+        }
+
+
+    }
+}
 ```
 ## 구조체  
 구조체는 여러 데이터를 한 데 모아둔 것이다. struct 로 선언할 수 있다. 변수와 메소드로 구성할 수 있다.  
