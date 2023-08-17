@@ -237,6 +237,118 @@ Console.WriteLine($"{x}, {y}"); // 출력 결과: 2, 1
 "옳은 말을 기분 좋게 하라. 당해낼 자가 없다"  
 셀프 고민 2시간 넘어가면 그냥 물어보자  
 
+## 실습 과제 - Snake Game   
+요구 조건은 다음과 같다.  
+1. 뱀은 매 턴마다 자신의 앞으로 이동합니다.  
+2. 사용자는 방향키를 이용하여 뱀의 이동 방향을 제어할 수 있습니다.  
+3. 뱀은 맵에 무작위로 생성되는 음식을 먹을 수 있습니다. 뱀이 음식을 먹으면 점수가 올라가고, 뱀의 길이가 늘어납니다.  
+4. 뱀이 벽이나 자신의 몸에 부딪히면 게임이 끝나고 'Game Over' 메시지를 출력합니다.
+처음에는 Stack 클래스를 활용하여 점의 좌표를 반복적으로 넣었다가 빼는 방식을 구현하려 했다. 하지만 커서에서 뱀을 출력하는 방향과 뱀이 이동하려는 방향이 늘 일치하는 것이 아니기 때문에, 뱀의 이동경로가 오른쪽이 아닌 경우
+뱀의 모양이 늘 흐트러지는 버그가 발생했고, 이를 바로잡기가 쉽지 않았다. 그래서 커서 위치를 옮겨야겠다는 필요성을 느꼈다.
+```cs
+using System;
+using System.Threading;
 
+namespace SnakeGame
+{
+    internal class Program
+    {
+        public class Snake
+        {
+            private int yPos = 5;
+            private int xPos = 5;
+            private bool yMove = false;
+            private bool xMove = false;
+            
+            bool IsHit {get;set;}
+            int SnakeSize {get;set;}
+            private Stack<int> xPoints = new Stack<int>();
+            private Stack<int> yPoints = new Stack<int>();
+
+            public Snake ( bool isHit, int snakeSize)
+            {
+                IsHit = isHit;
+                SnakeSize = snakeSize;
+            }
+
+            public void FirstMove()
+            {
+                for (int y = 0; y < yPos; y++)
+                {
+                    Console.WriteLine();
+                    yPoints.Push(yPos);
+                }
+
+                for (int i = 0; i < SnakeSize; i++) 
+                { 
+                    Console.Write(" *");
+                    xPoints.Push(xPos +1 + i);
+                    Thread.Sleep(500);
+                }
+
+            }
+
+            public void SnakeMove()
+            {
+                Console.Clear();
+                for (int i =0; i < SnakeSize;i++)
+                {
+                    yPos = yPoints.Pop();
+                    if (yMove == false)
+                    {
+                        for (int y = 0; y < yPos; y++)
+                        {
+
+                            Console.WriteLine();
+                            
+                        }
+                    }
+                    yMove = true;
+                    xPos = xPoints.Pop();
+                    if (xMove == false)
+                    {
+                        for (int x = 0; x < xPos; x++)
+                        {
+                            Console.Write(" ");
+                        }
+                        
+                    }
+                    xMove = true;
+                    Console.Write(" *");
+                  
+
+                }
+
+                for (int i = 0; i < SnakeSize; i++)
+                {
+                    xPoints.Push(xPos  + i + 1);
+                    yPoints.Push(yPos);
+                }
+                yMove = false;
+                xMove = false;
+                
+            }
+
+
+
+        }
+        
+        static void Main(string[] args)
+        {
+            bool isHit = false;
+            int snakeSize = 4;
+            Snake snake = new Snake(isHit, snakeSize);
+            snake.FirstMove();
+            while (true)
+            {
+                snake.SnakeMove();
+                Thread.Sleep(500);
+            }
+
+        }
+    }
+}
+```
+내일 계속 매달려봐야겠다...
 
 
