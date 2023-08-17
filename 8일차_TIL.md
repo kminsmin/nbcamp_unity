@@ -1,7 +1,7 @@
 <img width="100%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/793639b2-e1bb-478c-9958-c21f3342314f"/>  
 
 # 내일배움캠프 8일차  
-3주차 강의, 과제  
+3주차 강의, 과제, 학습법 특강  
 ## 객체지향 프로그래밍 (Object-Oriented Programming, OOP) 특징  
 1. 캡슐화 (Encapsulation) : 관련된 데이터와 기능을 하나의 단위로 묶는 것. 정보 은닉, 안정성, 보수
 2. 상속 (Inheritance) : 기존의 클래스를 확장하여 새로운 클래스를 만드는 메커니즘
@@ -153,6 +153,73 @@ foreach (Shape shape in list )
 오버로딩(Overloading) : 동일한 메서드 이름을 가지고 있지만, 매개변수의 개수, 타입, 또는 순서가 다른 여러 개의 메소드를 정의하는 것  
     -> 이를 통해 동일한 이름을 가진 메서드를 다양한 매개변수 조합으로 호출할 수 있다. Ex) Console.WriteLine(),Console.WriteLine(string, int. ...
 
+## 고급 문법 및 기능  
+제너릭, out, ref  
+### 제너릭  
+클래스나 메서드를 일반화시켜 다양한 자료형에 대응할 수 있게 하는 기능이다.  코드의 재사용성을 높일 수 있다. 제너릭 클래스나 메서드에서 사용될 자료형은 선언 시점이 아니라 사용 시점에 결정된다.
+제러릭 클래스나 메서드를 사용할 때는 <T>가 아니라 구체적인 자료형을 넣어준다.  
+```cs
+// 제너릭 클래스 선언 예시
+class Stack<T>
+{
+    private T[] elements;
+    private int top;
+
+    public Stack()
+    {
+        elements = new T[100];
+        top = 0;
+    }
+
+    public void Push(T item)
+    {
+        elements[top++] = item;
+    }
+
+    public T Pop()
+    {
+        return elements[--top];
+    }
+}
+
+// 제너릭 클래스 사용 예시
+Stack<int> intStack = new Stack<int>();
+intStack.Push(1);
+intStack.Push(2);
+intStack.Push(3);
+Console.WriteLine(intStack.Pop()); // 출력 결과: 3
+```
+### out, ref 키워드  
+둘 다 메서드에서 매개변수를 전달할 때 사용한다.  
+out 키워드는 메서드에서 반환값이 매개변수로 사용될 때, ref 키워드는 매개변수 값을 메서드 내에서 수정하여 원래 값에 영향을 줄 때 사용한다.   
+#### out 매개변수는 이전의 값을 전부 무시하기 때문에 초기화가 필요없다. ref 매개변수는 사용하기 전에 초기화가 필요하다. 아님 할당되지 않았다는 컴파일 에러가 발생한다. 또한 너무 많이 사용하면 코드의 가독성이 떨어지고 유지보수가 어려워지니 주의하자.  
+```cs
+// out 키워드 사용 예시
+void Divide(int a, int b, out int quotient, out int remainder)
+{
+    quotient = a / b;
+    remainder = a % b;
+}
+
+int quotient, remainder;
+Divide(7, 3, out quotient, out remainder);
+Console.WriteLine($"{quotient}, {remainder}"); // 출력 결과: 2, 1
+
+// ref 키워드 사용 예시
+void Swap(ref int a, ref int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int x = 1, y = 2;
+Swap(ref x, ref y);
+Console.WriteLine($"{x}, {y}"); // 출력 결과: 2, 1
+
+
+```
+
 ## 학습법 특강  
 1. 주특기를 가진 개발자
 2. 레거시 코드 개선, 현업 실무 능력, 성장 잠재력, 라이브러리 활용력, 사고력
@@ -168,5 +235,8 @@ foreach (Shape shape in list )
 전달하고자 하는 바를 명확하게 말하기  
 데이터 또는 기술적인 근거를 바탕으로 소통하기  
 "옳은 말을 기분 좋게 하라. 당해낼 자가 없다"  
-셀프 고민 2시간 넘어가면 그냥 물어보자
+셀프 고민 2시간 넘어가면 그냥 물어보자  
+
+
+
 
