@@ -241,4 +241,29 @@ public int AddNumbers(int a, int b)
     return sum;
 }
 ```
+## 게임 과제 : 틱택토 게임 만들기  
+콘솔에서 마우스 커서 위치를 가져올 수 있는 기능이 있는 줄 모르고 행렬을 각각 입력하는 방식으로 구현했다.  개인적인 욕심으로 인해 게임판 사이즈도 변경 가능하게 구현했다.  
+```cs
+
+```
+## 구조체  
+구조체는 여러 데이터를 한 데 모아둔 것이다. struct 로 선언할 수 있다. 변수와 메소드로 구성할 수 있다.  
+```cs
+struct Person
+{
+    public string Name;
+    public int Age;
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Name: {Name}, Age: {Age}");
+    }
+}
+
+Person person1;
+person1.Name = "John";
+person1.Age = 25;
+person1.PrintInfo();
+
+```
 
