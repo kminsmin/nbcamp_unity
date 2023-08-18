@@ -557,7 +557,6 @@ class Program
     static void Main(string[] args)
     {
         DrawMap();
-        // 뱀의 초기 위치와 방향을 설정하고, 그립니다.
         Point p = new Point(4, 5, '*');
         int length = 4;
         Direction dir = Direction.RIGHT;
@@ -579,13 +578,6 @@ class Program
         int randomNum = 5;
         List<Point> foods = new List<Point>();
         int score = 0;
-
-
-
-        // 음식의 위치를 무작위로 생성하고, 그립니다.
-        //FoodCreator foodCreator = new FoodCreator(80, 20, '$');
-        //Point food = foodCreator.CreateFood();
-        //food.Draw();
         Point foodPoint = new Point(5, 5, '$');
         // 게임 루프: 이 루프는 게임이 끝날 때까지 계속 실행됩니다.
         while (true)
@@ -600,15 +592,8 @@ class Program
                 foods.Add(foodPoint);
                 foodGen = 0;
             }
-            dirNum = snake.ChangeDir(dirNum); // 키 입력이 있는 경우에만 방향을 변경합니다.
-
-
+            dirNum = snake.ChangeDir(dirNum); 
             snake.SetHeadPoint(ref x, ref y, dirNum);
-
-
-            // 뱀이 이동하고, 음식을 먹었는지, 벽이나 자신의 몸에 부딪혔는지 등을 확인하고 처리하는 로직을 작성하세요.
-            // 이동, 음식 먹기, 충돌 처리 등의 로직을 완성하세요.
-
             score = snake.body.Count;
             head = new Point(x, y, '*');
             List<Point> eatedFood = snake.CheckFood(head, foods);
@@ -618,9 +603,6 @@ class Program
             DrawUI(score);
             if (isDead)
                 break;
-
-
-            // 뱀의 상태를 출력합니다 (예: 현재 길이, 먹은 음식의 수 등)
         }
         Console.WriteLine("Game Over");
     }
