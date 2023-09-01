@@ -13,7 +13,7 @@ String형 배열 seoul의 element중 "Kim"의 위치 x를 찾아, "김서방은 
 \- seoul의 원소는 길이 1 이상, 20 이하인 문자열입니다.  
 \- "Kim"은 반드시 seoul 안에 포함되어 있습니다.
 ​
-```
+```cs
 public class Solution {
     public string solution(string[] seoul) {
         int i = 0;
@@ -42,7 +42,7 @@ array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순�
 \- divisor는 자연수입니다.  
 \- array는 길이 1 이상인 배열입니다.
 ​
-```
+```cs
 using System.Collections.Generic;
 public class Solution {
     public int[] solution(int[] arr, int divisor) {
@@ -75,7 +75,7 @@ public class Solution {
 \- signs의 길이는 absolutes의 길이와 같습니다.  
 \- signs\[i\] 가 참이면 absolutes\[i\] 의 실제 정수가 양수임을, 그렇지 않으면 음수임을 의미합니다.
 ​
-```
+```cs
 using System;
 ​
 public class Solution {
@@ -103,7 +103,7 @@ public class Solution {
 **제한 사항**  
 phone\_number는 길이 4 이상, 20이하인 문자열입니다.
 ​
-```
+```cs
 public class Solution {
     public string solution(string phone_number) {
         string answer = "";
@@ -132,7 +132,7 @@ public class Solution {
 \- 0 ≤ numbers의 모든 원소 ≤ 9  
 \- numbers의 모든 원소는 서로 다릅니다.
 ​
-```
+```cs
 using System;
 ​
 public class Solution {
@@ -167,7 +167,7 @@ public class Solution {
 \- arr은 길이 1 이상인 배열입니다.  
 \- 인덱스 i, j에 대해 i ≠ j이면 arr\[i\] ≠ arr\[j\] 입니다.
 ​
-```
+```cs
 using System.Collections.Generic;
 using System.Linq;
 public class Solution {
@@ -203,7 +203,7 @@ public class Solution {
 **제한 사항**  
 \- s는 길이가 1 이상, 100이하인 스트링입니다.
 ​
-```
+```cs
 public class Solution {
     public string solution(string s) {
         string answer = "";
@@ -226,7 +226,7 @@ public class Solution {
 ​
 오늘 인벤토리 씬 개발을 완료 후 메인에 머지하고, 편안한 마음으로 기능 테스트를 하다가 슬프게도 발견한 버그다. 예외 메시지를 확인해보니, Item 클래스의 객체를 Item을 상속받은 하위 클래스인 Weapon 클래스로 다운캐스팅할 수 없다고 했다. 재미있게도 캐릭터 생성시 기본적으로 인벤토리에 추가되도록 한 기본 아이템들은 이러한 문제가 발생하지 않았다. 그래서 인벤토리 씬 클래스의 문제는 아니라고 판단했다. 아래는 플레이어 인벤토리의 아이템들을 검사하여 각각 맞는 형식으로 다운캐스팅한 뒤 하위 클래스의 프로퍼티에 접근하는 코드이다.
 ​
-```
+```cs
  private string PrintItemInfo(Item item)
         {
             int nameLength;
