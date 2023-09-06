@@ -141,4 +141,8 @@ public class DisplayTime : MonoBehaviour
 }
 ```
 
+## 인풋 시스템, 델리게이트(액션), 옵저버 패턴  
+기존의 인풋 방식이 아닌, 유니티에 새롭게 추가된 인풋 시스템을 활용하여 플레이어의 움직임을 구현해보았다. Input Actions에서 control scheme, 어떤 인풋으로 어떤 값을 얻어올 건지 등을 정의한다. 이번 과제의 경우 플레이어의 움직임을 구현하기 위해 Move 액션을 추가하고, 플레이어 오브젝트에 PlayerInput 컴포넌트를 추가하여 방금 만든 Input Actions를 넣어준다. 이후 PlayerInputController라는 스크립트를 만들어서 OnMove라는 이름으로 메서드를 만들어주면, 인풋값을 받을 때마다 해당 메서드를 호출한다. OnMove는 받은 인풋값을 노멀라이즈 한 후 Vector2값으로 변환하여 이벤트를 호출하는 메서드로 전달한다. 이벤트를 사용한 이유는 외부에서의 호출을 막기 위함이다. 액션은 매개변수를 받지만 반환값은 없는 델리게이트이다. OnMoveEvent 를 event Action<Vector2>로 선언하고, CallMoveEvent라는 메서드에서 OnMoveEvent가 null이 아닐 시 받은 Vector2값을 넣어 Invoke하도록 한다. 즉 해당 델리게이트에 어떤 메서드가 등록되어 있다면 그 메서드를 실행하는 것이다. 이러한 구조를 옵저버 패턴이라 하고, 이 이벤트에 메서드를 등록하는 것을 "구독"한다고 표현한다.  
+<img width="100%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/2c04e560-8202-4c2e-b2e6-c0b65a760a0f"/>    
+
 
