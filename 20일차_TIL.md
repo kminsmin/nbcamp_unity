@@ -1,7 +1,7 @@
 # 내일배움캠프 20일차 TIL
 오늘도 코드카타 후 개인과제 개발을 진행했다.  
 
-## 코드카타 - 기에 남는 문제  
+## 코드카타 - 기억에 남는 문제  
 # [level 1] 3진법 뒤집기 - 68935 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/68935) 
