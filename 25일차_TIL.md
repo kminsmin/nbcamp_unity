@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         MonsterManager.Instance.AddMonsterDieEvent(DefeatBoss);
     }
 
-    void TurnOnGameOver()                                                 //플레이어 사망 시 실드
+    void TurnOnGameOver()                                                 //플레이어 사망 시 실행
     {
         um.GetComponent<AudioSource>().Stop();
         Time.timeScale = 0;
