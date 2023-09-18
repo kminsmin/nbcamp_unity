@@ -2,8 +2,7 @@
 오전에는 Unity 숙련주차 발제와 함께 새로운 팀원들을 만났다. 이후 코드카타를 진행하고 숙련주차 강의를 수강했다.  
 
 ## 코드카타 - 기억에 남는 문제  
-# [unrated] 가장 가까운 같은 글자 - 142086   
-# [unrated] 콜라 문제 - 132267 
+  # [unrated] 콜라 문제 - 132267 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132267) 
 
