@@ -1,5 +1,5 @@
 # 내일배움캠프 44일차 TIL  
-오전에 코드카타 후, 유니티 심화주차 강의를 수강하고 개인과제로 무엇을 만들지 고민하는 시간을 가졌다.  
+오전에 코드카타 후,  팀 프로젝트 개발을 진행했다. 저녁에는 디자인 패턴 중 빌더 패턴에 대한 특강이 있었다.  
 
 ## 코드카타 - 기억에 남는 문제    
 # [level 1] 체육복 - 42862 
@@ -138,4 +138,111 @@ public class Solution {
         return answer;
     }
 }
+```  
+
+## 빌더 패턴  
+객체를 생성할 때, 클래스의 생성자에 매개변수가 다수 존재한다면, 우리는 어떤 순서에 어떤 매개변수를 넣어줘야 하는지 일일이 기억해서 넣어주어야 할 것이다. 이런 방식이라면 매개변수 개수가 늘어날 때마다 개발 난이도가 상승할 것이다. 이를 해결하기 위한 방법으로 생성자를 오버로딩하거나, 필수 초기화 변수 외 변수들을 위한 Setter 메서드들을 일일이 만들어주는 방법이 있을 것이다. 하지만 이러한 방법들도 좋은 방법은 아니다. 생성자를 오버로딩하는 방법은 매개변수가 증가함에 따라 생성자의 종류도 늘어나기 때문에 가독성이나 유지보수 측면에서 좋지 않고, Setter 메서드를 만드는 경우는 객체 생성 시점에 모든 값들을 주입하지 않아 일관성 문제와 불변성 문제가 발생할 수 있다. 객체가 생성되는 도중 오류가 발생한다면 일부 변수는 초기화가 되지 않은 상태로 불안정한 상태의 객체가 만들어지는 것이다. 또한 객체가 만들어진 이후에도 여전히 외부적으로 Setter 메서드를 노출하고 있으므로 외부에서 함부로 객체를 조작할 수 있다. 이러한 문제들의 해결 방안으로 빌더 패턴이 등장했다.   
+
+빌더 패턴은 별도의 빌더 클래스를 만들어 필수 값들의 경우는 생성자를 통해, 선택적인 값들의 경우는 메서드를 통해 값을 입력받은 후 최종적으로 빌더 메서드를 호출하여 하나의 인스턴스를 반환하는 방식이다.  
+### 1. 자동차 클래스 작성  
+```cs
+using System;
+
+public class Car
+{
+    private string steeringWheel;
+    private int tires;
+    private string engine;
+    private bool sunroof;
+    private bool navigation;
+    private bool blackbox;
+
+    public Car(string steeringWheel, int tires, string engine)
+    {
+        this.steeringWheel = steeringWheel;
+        this.tires = tires;
+        this.engine = engine;
+    }
+
+    public override string ToString()
+    {
+        return $"Steering Wheel: {steeringWheel}, Tires: {tires}, Engine: {engine}, Sunroof: {sunroof}, Navigation: {navigation}, Blackbox: {blackbox}";
+    }
+}
 ```
+### 2. 빌더 클래스 작성   
+```cs
+public class Builder
+{
+    private string steeringWheel;
+    private int tires;
+    private string engine;
+
+    private bool sunroof = false;
+    private bool navigation = false;
+    private bool blackbox = false;
+
+    public Builder(string steeringWheel, int tires, string engine)
+    {
+        this.steeringWheel = steeringWheel;
+        this.tires = tires;
+        this.engine = engine;
+    }
+
+    public Builder WithSunroof(bool sunroof)
+    {
+        this.sunroof = sunroof;
+        return this;
+    }
+
+    public Builder WithNavigation(bool navigation)
+    {
+        this.navigation = navigation;
+        return this;
+    }
+
+    public Builder WithBlackbox(bool blackbox)
+    {
+        this.blackbox = blackbox;
+        return this;
+    }
+
+    public Car Build()
+    {
+        return new Car(steeringWheel, tires, engine)
+        {
+            sunroof = this.sunroof,
+            navigation = this.navigation,
+            blackbox = this.blackbox
+        };
+    }
+}
+```
+### 3. 프로그램 실행  
+```cs
+class Program
+{
+    static void Main()
+    {
+        Car car1 = new Car.Builder("Leather", 4, "V6")
+            .WithSunroof(true)
+            .WithNavigation(true)
+            .WithBlackbox(true)
+            .Build();
+
+        Car car2 = new Car.Builder("Standard", 4, "Inline-4")
+            .WithSunroof(true)
+            .WithNavigation(false)
+            .WithBlackbox(false)
+            .Build();
+
+        Console.WriteLine("Car 1 Details:");
+        Console.WriteLine(car1);
+
+        Console.WriteLine("Car 2 Details:");
+        Console.WriteLine(car2);
+    }
+}
+```
+
+프로그램 실행 시 객체 생성은 여러가지 메서드들을 체이닝하여 이루어지기 때문에, 객체 생성 시점에 모든 작업이 이루어지므로 앞서 언급된 일관성, 불변성 문제가 발생하지 않게 된다. 초기화가 필수인 멤버는 생성자로, 선택적인 멤버는 빌더의 메서드로 받기 때문에, 사용자로 하여금 필수 멤버와 선택 멤버를 구분하여 객체를 생성하도록 유도할 수 있다. 하지만 빌더 패턴을 적용하려면 각 클래서마다 새로운 빌더 클래스를 만들어야 해서 클래스 수가 늘어날수록 관리해야할 클래서가 많아지고 구조가 복잡해질 수 있다는 단점이 있다.  
