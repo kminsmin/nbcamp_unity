@@ -12,4 +12,4 @@
      - Animation Track : Animation 자체를 만드는 것과 비슷하게 특정 시간에서 게임 오브젝트가 어떤 위치에서 어떤 방향으로 어떤 모습으로 있을지 등을 결정할 수 있다.
      - Cinemachine Track : 특정 장면을 담을 Cinemachine Virtual Camera들을 미리 세팅해두고, 해당 카메라들을 트랙으로 추가할 수 있다. 두 개의 서로 다른 장면을 촬영하고 있는 카메라들을 타임라인 상에서 겹치게 하면 부드러운 화면 전환을 구현할 수도 있다.
      - 그 외에도 Audio, Control, Playable, Signal Track 등 다양한 종류의 트랙이 존재한다.
-https://github.com/kminsmin/nbcamp_unity/assets/114645806/41489df2-f617-42c4-bc0f-f0c1e2bad64a)https://github.com/kminsmin/nbcamp_unity/assets/114645806/41489df2-f617-42c4-bc0f-f0c1e2bad64a
+https://github.com/kminsmin/nbcamp_unity/assets/114645806/41489df2-f617-42c4-bc0f-f0c1e2bad64a)
