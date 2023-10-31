@@ -8,3 +8,9 @@ C#에서 가비지 컬렉터는 메모리 관리를 자동화해주는 역할을
 3. IDisposable 인터페이스 사용  
 4. Finalizer 사용 최소화
 5. 값 타입 사용  
+
+## 팀 프로젝트 개발 - 절차적 맵 생성  
+먼저 통로와 벽으로 이루어진 방 프리팹을 만든다. 방 프리팹은 각 문의 방향과 위치에 대한 정보를 담은 스크립트를 컴포넌트로 가지고 있다. 이후 DungeonGenerator 스크립트에서 현재 방에서 연결 가능한 모든 문에 다음 방을 연결하는 메서드를 목표 방 개수에 도달할 때 까지 재귀호출하는 방식으로 구현했다. 내일은 맵 구조를 더 복잡하게 생성하고, 뚫린 부분이 존재하지 않도록 수정할 예정이다.    
+<img width="100%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/b4089e25-5eb7-4c95-8eea-ecde8d808702)"/>   
+
+<img width="100%" src="https://github.com/kminsmin/nbcamp_unity/assets/114645806/312b7b4b-647d-45f8-b000-a3839fbf4d53"/>   
